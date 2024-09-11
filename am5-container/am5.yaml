@@ -7,7 +7,7 @@ fre_properties:
   - &EXP_AMIP_START     "19790101T0000Z"
   - &EXP_AMIP_END       "19820101T0000Z"
   - &ANA_AMIP_START     "19800101T0000Z"
-  - &ANA_AMIP_END       "19820101T0000Z"
+  - &ANA_AMIP_END       "19810101T0000Z"
 
   - &PP_AMIP_CHUNK96    "P2Y"
   - &PP_AMIP_CHUNK384   "P1Y"
@@ -37,7 +37,7 @@ fre_properties:
 shared:
 # directories shared across tools
   directories: &shared_directories
-    history_dir: !join [/archive/$USER/, *FRE_STEM, /, *name, /, *platform, -, *target, /, history]
+    history_dir: /archive/am5/am5/am5f7c1r0/c96L65_am5f7c1r0_amip/gfdl.ncrc5-deploy-prod-openmp/history
     pp_dir:      !join [/archive/$USER/, *FRE_STEM, /, *name, /, *platform, -, *target, /, pp]
     ptmp_dir:    "/xtmp/$USER/ptmp"
     ## USING FOR CONTAINER
@@ -65,38 +65,6 @@ shared:
       do_analysis:        False 
 
 experiments:
-  - name: "c96L65_am5f7b12r1_amip"
-    pp:
-      - "yaml_include/pp.c96_amip.yaml"
-  - name: "c96L65_am5f7b12r1_pdclim1850F"
-    pp:
-      - "yaml_include/pp.c96_clim.yaml"
-  - name: "c96L65_am5f7b12r1_pdclim2010F"
-    pp:
-      - "yaml_include/pp.c96_clim.yaml"
-  - name: "c96L65_am5f7b12r1_pdclim2010AERF"
-    pp:
-      - "yaml_include/pp.c96_clim.yaml"
-  - name: "c384L65_am5f7b12r1_amip"
-    pp:
-      - "yaml_include/pp.c384_amip.yaml"
-  - name: "c384L65_am5f7b12r1_pdclim2010F"
-    pp:
-      - "yaml_include/pp.c384_clim.yaml"
-  - name: "c384L65_am5f7b12r1_pdclim1850F"
-    pp:
-      - "yaml_include/pp.c384_clim.yaml"
-  - name: "c384L65_am5f7b12r1_pdclim2010AERF"
-    pp:
-      - "yaml_include/pp.c384_clim.yaml"
-  - name: "c384L65_am5f7b12r1_OM4_p25_piControl_noBLING_DynVeg"
-    pp:
-      - "yaml_include/pp.c384_amip.yaml"
-      - "yaml_include/pp.om4.yaml"
-  - name: "c96L65_am5f7b12r1_OM4_p25_piControl_noBLING_DynVeg"
-    pp:
-      - "yaml_include/pp.c96_amip.yaml"
-      - "yaml_include/pp.om4.yaml"
-  - name: "c96L65_am5f7b12r1_amip_cosp"
+  - name: "am5.example2"
     pp:
       - "yaml_include/pp.c96_amip.yaml"

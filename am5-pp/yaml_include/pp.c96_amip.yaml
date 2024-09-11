@@ -16,7 +16,8 @@ postprocess:
     <<: *shared_settings
     pp_start:   *ANA_AMIP_START
     pp_stop:    *ANA_AMIP_END
-    pp_chunk_a: *PP_AMIP_CHUNK96
+    pp_chunk_a: "P2Y"
+    pp_chunk_b: "P4Y"
     pp_components: "atmos atmos_scalar"
   switches: 
     <<: *shared_switches

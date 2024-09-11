@@ -1,4 +1,7 @@
 This example hopes to be an equivelant of the AM5XML postprocessing
+5-years, atmos and atmos_scalar, 1-year pp chunks
+
+with analysis scripts; these don't completely work yet
 
 module load fre/canopy
 

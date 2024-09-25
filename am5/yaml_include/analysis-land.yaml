@@ -5,4 +5,3 @@ land:
   product: 'ts'
   script: 'analysis-land.sh'
   install: 'install-analysis-land.sh'
-  publish: 'publish-analysis-land.sh'

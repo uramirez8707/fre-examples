@@ -17,7 +17,7 @@ postprocess:
     pp_start:   *ANA_AMIP_START
     pp_stop:    *ANA_AMIP_END
     pp_chunk_a: *PP_AMIP_CHUNK96
-    pp_components: "atmos atmos_scalar"
+    pp_components: "atmos land"
   switches: 
     <<: *shared_switches
     do_statics: False
@@ -32,3 +32,9 @@ postprocess:
       inputRealm: 'atmos'
     - type: "atmos_scalar"
       sources: "atmos_scalar"
+    - type: "land"
+      sources: "land_month"
+      sourceGrid: "cubedsphere"
+      xyInterp: *PP_XYINTERP96
+      interpMethod: "conserve_order1"
+      inputRealm: "land"

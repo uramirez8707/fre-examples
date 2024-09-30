@@ -25,7 +25,7 @@ postprocess:
   # main pp instructions
   components:
     - type: "atmos"
-      sources: "atmos_month_cmip atmos_8xdaily_cmip atmos_daily_cmip"
+      sources: "atmos_month"
       sourceGrid: "cubedsphere"
       xyInterp: *PP_XYINTERP96
       interpMethod: "conserve_order2"
@@ -33,7 +33,7 @@ postprocess:
     - type: "atmos_scalar"
       sources: "atmos_scalar"
     - type: "land"
-      sources: "land_month"
+      sources: "land_month_cmip"
       sourceGrid: "cubedsphere"
       xyInterp: *PP_XYINTERP96
       interpMethod: "conserve_order1"

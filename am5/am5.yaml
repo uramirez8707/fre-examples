@@ -29,7 +29,7 @@ shared:
       site:                     "ppan"
     switches: &shared_switches
       do_statics:               True
-      do_timeavgs:              True
+      do_timeavgs:              False
       clean_work:               True
       do_refinediag:            False
       do_atmos_plevel_masking:  True

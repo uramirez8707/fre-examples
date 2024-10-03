@@ -36,7 +36,7 @@ fre_properties:
   - &release             "f1a1r1"
   - &INTEL               "intel-classic"
   - &FMSincludes         "-IFMS/fms2_io/include -IFMS/include -IFMS/mpp/include"
-  - &momIncludes         "-Imom6/MOM6-examples/src/MOM6/pkg/CVMix-src/include"
+  - &momIncludes         "-Imom6/MOM6-examples/src/MOM6/pkg/CVMix-src/include -Imom6/MOM6-examples/src/MOM6/src/framework" 
 
 build:
   # compile information

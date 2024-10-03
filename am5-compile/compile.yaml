@@ -7,7 +7,7 @@ compile:
           repo: "https://github.com/NOAA-GFDL/FMS.git"
           branch: "2024.01"
           cppdefs: "-DHAVE_GETTID -DINTERNAL_FILE_NML -Duse_libMPI -Duse_netCDF"
-          otherFlags: "$(FMSincludes)"      
+          otherFlags: *FMSincludes
         - component: "GRTCODE"
           repo: "https://github.com/NOAA-GFDL/GRTCODE.git"
           branch: "2024.01"
@@ -37,20 +37,20 @@ compile:
                   "rte-rrtmgp/examples/mo_load_coefficients.F90"]
           cppdefs: "-heap-arrays"
           makeOverrides: 'OPENMP=""'
-          otherFlags: "$(FMSincludes)"
+          otherFlags: *FMSincludes
         - component: "rte-ecckd"
           requires: ["FMS", "rte-rrtmgp"]
           repo: "http://github.com/NOAA-GFDL/rte-ecckd.git"
           branch: "2024.01"
           paths: ["rte-ecckd/src/gas_optics_ecckd.f90"]
-          otherFlags: "$(FMSincludes)"
+          otherFlags: *FMSincludes
         - component: "am5_phys"
           requires: ["FMS", "GRTCODE", "rte-rrtmgp", "rte-ecckd"]
           repo: "https://gitlab.gfdl.noaa.gov/FMS/am5_phys.git"
           branch: "2024.08"
           paths: ["am5_phys/atmos_param", "am5_phys/atmos_shared"]
           cppdefs: "-DINTERNAL_FILE_NML"
-          otherFlags: "$(FMSincludes)"
+          otherFlags: *FMSincludes
         - component: "GFDL_atmos_cubed_sphere"
           requires: ["FMS", "am5_phys"]
           repo: "https://github.com/NOAA-GFDL/GFDL_atmos_cubed_sphere.git"
@@ -62,7 +62,7 @@ compile:
                   "GFDL_atmos_cubed_sphere/tools",
                   "GFDL_atmos_cubed_sphere/GFDL_tools"] 
           cppdefs: "-DINTERNAL_FILE_NML -DSPMD -DCLIMATE_NUDGE"
-          otherFlags: "$(FMSincludes)"
+          otherFlags: *FMSincludes
         - component: "atmos_drivers"
           requires: ["FMS", "am5_phys", "GFDL_atmos_cubed_sphere", "GRTCODE", "rte-rrtmgp", "rte-ecckd"]
           repo: "https://github.com/NOAA-GFDL/atmos_drivers.git"
@@ -76,7 +76,7 @@ compile:
           branch: "2023.02"
           doF90Cpp: True
           cppdefs: "-DINTERNAL_FILE_NML -nostdinc"
-          otherFlags: "$(FMSincludes)"
+          otherFlags: *FMSincludes
         - component: "mom6"
           requires: ["FMS"]
           repo: ["https://github.com/NOAA-GFDL/ocean_BGC.git","https://github.com/NOAA-GFDL/MOM6-examples.git"]
@@ -95,7 +95,7 @@ compile:
                   "mom6/MOM6-examples/src/MOM6/config_src/infra/FMS2"] 
           cppdefs: "-DINTERNAL_FILE_NML" #-DMAX_FIELDS_=100 -DNOT_SET_AFFINITY -D_USE_MOM6_DIAG -D_USE_GENERIC_TRACER  -DUSE_PRECISION=2"
           makeOverrides: 'OPENMP=""'
-          otherFlags: "$(FMSincludes) $(momIncludes)"
+          otherFlags: !join [*FMSincludes, " ", *momIncludes]
         - component: "sis2"
           requires: ["FMS", "mom6"]
           repo: ["https://github.com/NOAA-GFDL/ice_param.git"]
@@ -105,11 +105,11 @@ compile:
                   "mom6/MOM6-examples/src/SIS2/src", 
                   "mom6/MOM6-examples/src/icebergs/src",
                   "sis2"]
-          otherFlags: "$(FMSincludes) $(momIncludes)"
+          otherFlags: !join [*FMSincludes, " ", *momIncludes]
           cppdefs: "-DUSE_FMS2_IO -DINTERNAL_FILE_NML" 
         - component: "FMScoupler"
           requires: ["FMS", "GFDL_atmos_cubed_sphere", "atmos_drivers", "am5_phys", "land_lad2", "sis2", "mom6"]
           repo: "https://github.com/NOAA-GFDL/FMScoupler.git"
           branch: "2023.04"
           paths: ["FMScoupler/full", "FMScoupler/shared"]
-          otherFlags: "$(FMSincludes) $(momIncludes)"
+          otherFlags: !join [*FMSincludes, " ", *momIncludes]

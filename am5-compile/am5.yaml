@@ -41,7 +41,7 @@ fre_properties:
 build:
   # compile information
   compileYaml:  "compile.yaml"
-  platformYaml: "yaml_include/platforms.yaml"
+  platformYaml: "platforms.yaml"
 
 shared:
   # directories shared across tools

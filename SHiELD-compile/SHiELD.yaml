@@ -1,0 +1,29 @@
+# reusable variables
+fre_properties:
+  - &SHiELD_VERSION    "shield_nh"
+  - &FRE_STEM          !join [SHiELD/, *SHiELD_VERSION]
+  - &fv3_release       main
+  - &phy_release       main
+  - &fms_release       "2023.02"
+  - &drivers_release   main
+  - &coupler_release   "2023.02"
+  - &FMSincludes       "-IFMS/fms2_io/include -IFMS/include -IFMS/mpp/include"
+  - &momIncludes       "-Imom6/MOM6-examples/src/MOM6/pkg/CVMix-src/include"
+  - &INTEL             "intel-classic"
+
+# compile information
+build:
+  platformYaml: platforms.yaml
+  compileYaml: compile.yaml
+
+shared:
+  # directories shared across tools
+  directories: &shared_directories
+    history_dir:  !join [/archive/$USER/, *FRE_STEM, /, *name, /, *platform, -, *target, /, history]
+    pp_dir:       !join [/archive/$USER/, *FRE_STEM, /, *name, /, *platform, -, *target, /, pp]
+    analysis_dir: !join [/nbhome/$USER/, *FRE_STEM, /, *name]
+    ptmp_dir:     "/xtmp/$USER/ptmp"
+
+experiments:
+  - name:
+    pp:

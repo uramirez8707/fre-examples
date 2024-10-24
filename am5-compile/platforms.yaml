@@ -5,7 +5,7 @@ platforms:
      modules: [!join [*INTEL, "/2023.2.0"], cray-hdf5/1.12.2.11, cray-netcdf/4.9.0.9]
      fc: ftn
      cc: cc
-     mkTemplate: !join ["/ncrc/home2/fms/local/opt/fre-commands/bronx-22/site/ncrc5/", *INTEL, ".mk"]
+     mkTemplate: /autofs/ncrc-svm1_home1/Uriel.Ramirez/mkmf/templates/ncrc5-intel-classic.mk
      modelRoot: ${HOME}/fremake_canopy/test
    - name: hpcme.2023
      compiler: intel

@@ -47,21 +47,22 @@ compile:
           otherFlags: *FMSincludes
         - component: "am5_phys"
           requires: ["FMS", "GRTCODE", "rte-rrtmgp", "rte-ecckd"]
-          repo: "https://gitlab.gfdl.noaa.gov/FMS/am5_phys.git"
-          branch: "2024.10"
+          repo: "https://gitlab.gfdl.noaa.gov/uriel.ramirez/am5_phys.git"
+          branch: "MM"
           paths: ["am5_phys/atmos_param", "am5_phys/atmos_shared"]
           cppdefs: "-DINTERNAL_FILE_NML"
           otherFlags: *FMSincludes
         - component: "GFDL_atmos_cubed_sphere"
           requires: ["FMS", "am5_phys"]
           repo: "https://github.com/NOAA-GFDL/GFDL_atmos_cubed_sphere.git"
-          branch: "2023.03_am5"
+          branch: "2024.01_am5"
           paths: ["GFDL_atmos_cubed_sphere/driver/GFDL",
                   "GFDL_atmos_cubed_sphere/model",
                   "GFDL_atmos_cubed_sphere/driver/SHiELD/cloud_diagnosis.F90",
                   "GFDL_atmos_cubed_sphere/driver/SHiELD/gfdl_cloud_microphys.F90",
                   "GFDL_atmos_cubed_sphere/tools",
                   "GFDL_atmos_cubed_sphere/GFDL_tools"] 
+          makeOverrides: 'USE_R4=TRUE'
           cppdefs: "-DINTERNAL_FILE_NML -DSPMD -DCLIMATE_NUDGE"
           otherFlags: *FMSincludes
         - component: "atmos_drivers"

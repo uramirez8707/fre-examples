@@ -80,7 +80,7 @@ compile:
         - component: "mom6"
           requires: ["FMS"]
           repo: ["https://github.com/NOAA-GFDL/ocean_BGC.git"]
-          branch: ["2023.01"]
+          branch: ["2023.04"]
           paths: ["mom6/MOM6-examples/src/MOM6/config_src/memory/dynamic_nonsymmetric", 
                   "mom6/MOM6-examples/src/MOM6/config_src/drivers/FMS_cap mom6/src/MOM6/src/*/", 
                   "mom6/MOM6-examples/src/MOM6/src/*",

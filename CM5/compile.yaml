@@ -1,7 +1,7 @@
 compile:
     experiment: !join [*AM5_VERSION, "_",*OM5_VERSION, "_compile"]
-    container_addlibs: 
-    baremetal_linkerflags:  
+    container_addlibs:
+    baremetal_linkerflags:
     src:
         - component: "FMS"
           repo: "https://github.com/NOAA-GFDL/FMS.git"
@@ -60,7 +60,7 @@ compile:
                   "GFDL_atmos_cubed_sphere/driver/SHiELD/cloud_diagnosis.F90",
                   "GFDL_atmos_cubed_sphere/driver/SHiELD/gfdl_cloud_microphys.F90",
                   "GFDL_atmos_cubed_sphere/tools",
-                  "GFDL_atmos_cubed_sphere/GFDL_tools"] 
+                  "GFDL_atmos_cubed_sphere/GFDL_tools"]
           cppdefs: "-DINTERNAL_FILE_NML -DSPMD -DCLIMATE_NUDGE"
           otherFlags: *FMSincludes
         - component: "atmos_drivers"
@@ -81,18 +81,17 @@ compile:
           requires: ["FMS"]
           repo: ["https://github.com/NOAA-GFDL/ocean_BGC.git"]
           branch: ["2023.04"]
-          paths: ["mom6/MOM6-examples/src/MOM6/config_src/memory/dynamic_nonsymmetric", 
-                  "mom6/MOM6-examples/src/MOM6/config_src/drivers/FMS_cap mom6/src/MOM6/src/*/", 
+          paths: ["mom6/MOM6-examples/src/MOM6/config_src/memory/dynamic_symmetric",
+                  "mom6/MOM6-examples/src/MOM6/config_src/drivers/FMS_cap",
                   "mom6/MOM6-examples/src/MOM6/src/*",
                   "mom6/MOM6-examples/src/MOM6/src/*/*",
-                  "mom6/MOM6-examples/src/MOM6/config_src/external/ODA_hooks", 
-                  "mom6/MOM6-examples/src/MOM6/config_src/external/database_comms", 
-                  "mom6/MOM6-examples/src/MOM6/config_src/external/drifters", 
-                  "mom6/MOM6-examples/src/MOM6/config_src/external/stochastic_physics", 
-                  "mom6/ocean_BGC/generic_tracers", 
-                  "mom6/ocean_BGC/mocsy/src", 
-                  "mom6/MOM6-examples/src/MOM6/pkg/GSW-Fortran/*/", 
-                  "mom6/MOM6-examples/src/MOM6/config_src/infra/FMS2"] 
+                  "mom6/MOM6-examples/src/MOM6/config_src/external/ODA_hooks",
+                  "mom6/MOM6-examples/src/MOM6/config_src/external/database_comms",
+                  "mom6/MOM6-examples/src/MOM6/config_src/external/drifters",
+                  "mom6/MOM6-examples/src/MOM6/config_src/external/stochastic_physics",
+                  "mom6/ocean_BGC/generic_tracers",
+                  "mom6/ocean_BGC/mocsy/src",
+                  "mom6/MOM6-examples/src/MOM6/config_src/infra/FMS2"]
           cppdefs: "-DINTERNAL_FILE_NML -DMAX_FIELDS_=100 -DNOT_SET_AFFINITY -D_USE_MOM6_DIAG -D_USE_GENERIC_TRACER  -DUSE_PRECISION=2"
           makeOverrides: 'OPENMP=""'
           otherFlags: !join [*FMSincludes, " ", *momIncludes]
@@ -108,13 +107,13 @@ compile:
           requires: ["FMS", "mom6"]
           repo: ["https://github.com/NOAA-GFDL/ice_param.git"]
           branch: ["2024.02"]
-          paths: ["mom6/MOM6-examples/src/SIS2/config_src/dynamic_symmetric", 
-                  "mom6/MOM6-examples/src/SIS2/config_src/external/Icepack_interfaces", 
-                  "mom6/MOM6-examples/src/SIS2/src", 
+          paths: ["mom6/MOM6-examples/src/SIS2/config_src/dynamic_symmetric",
+                  "mom6/MOM6-examples/src/SIS2/config_src/external/Icepack_interfaces",
+                  "mom6/MOM6-examples/src/SIS2/src",
                   "mom6/MOM6-examples/src/icebergs/src",
                   "sis2"]
           otherFlags: !join [*FMSincludes, " ", *momIncludes]
-          cppdefs: "-DUSE_FMS2_IO -DINTERNAL_FILE_NML" 
+          cppdefs: "-DUSE_FMS2_IO -DINTERNAL_FILE_NML"
         - component: "FMScoupler"
           requires: ["FMS", "GFDL_atmos_cubed_sphere", "atmos_drivers", "am5_phys", "land_lad2", "sis2", "mom6"]
           repo: "https://github.com/NOAA-GFDL/FMScoupler.git"
